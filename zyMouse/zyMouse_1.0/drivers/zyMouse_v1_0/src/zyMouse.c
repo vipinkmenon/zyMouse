@@ -35,7 +35,7 @@ void startZymouse(zyMouse* zyMouseInst){
 
 u32 setupZymouseInterrupt(zyMouse *zyMouseInst, XScuGic *IntcInstancePtr,u32 IRQ){
 	u32 Status;
-	XScuGic_SetPriorityTriggerType(IntcInstancePtr,IRQ,0xA0,3);
+	//XScuGic_SetPriorityTriggerType(IntcInstancePtr,IRQ,0xA0,3); //For proper operation should be level triggered
 	Status = XScuGic_Connect(IntcInstancePtr,IRQ,(Xil_InterruptHandler)Mouse_Handler,zyMouseInst);
 	if (Status != XST_SUCCESS) {
 		xil_printf("Failed read channel connect intc %d\r\n", Status);
